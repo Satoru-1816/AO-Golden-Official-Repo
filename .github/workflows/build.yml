@@ -230,7 +230,7 @@ jobs:
           mkdir imageformats
           cp ../QtApng/plugins/imageformats/libqapng.so ./imageformats/libqapng.so
           chmod +x launch.sh
-          cp ../build/Attorney_Online .
+          ls
           chmod +x Attorney_Online
           tar -cf Attorney_Online.tar ./*
           rm -rf imageformats
@@ -263,8 +263,10 @@ jobs:
         run: |
           mkdir ./build/libs/
           mkdir ./build/libs/armeabi-v7a/
-          ls ./build/
-          mv ./lib/*.so ./build/libs/armeabi-v7a/
+          ls
+          ls ./bin/
+          ls ./lib/
+          mv ./bin/*.so ./build/libs/armeabi-v7a/
           cp ./QtApng/plugins/imageformats/libplugins_imageformats_qapng_armeabi-v7a.so ./build/libs/armeabi-v7a/
           androiddeployqt --input android-Attorney_Online-deployment-settings.json --output ./build/ --apk ./bin/AttorneyOnline.apk
 
