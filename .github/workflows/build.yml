@@ -25,9 +25,9 @@ jobs:
             os: ubuntu-latest
           - platform: android
             os: ubuntu-latest
-          - platform: msvc2019
+          - platform: win64_msvc2019_64
             os: windows-2019
-          - platform: mingw81_32
+          - platform: win64_mingw
             os: windows-latest
           - platform: clang_64
             os: macos-latest
@@ -66,6 +66,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
+          arch: ${{matrix.platform}}
 
       - name: Install Qt Websockets
         if: contains(matrix.version, '6.')
