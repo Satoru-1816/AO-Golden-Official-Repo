@@ -67,6 +67,13 @@ jobs:
         with:
           version: ${{matrix.version}}
 
+      - name: Install Qt Websockets
+        if: contains(matrix.version, '6.')
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{matrix.version}}
+          archive: qtbase qtwebsockets
+
       - name: Install QtApng
         run: |
           git clone https://github.com/stonedDiscord/QtApng.git
