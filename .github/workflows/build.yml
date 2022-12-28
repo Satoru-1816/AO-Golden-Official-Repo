@@ -62,11 +62,10 @@ jobs:
            echo "y" | $SDKMANAGER "ndk;21.4.7075529"
            ln -sfn $ANDROID_SDK_ROOT/ndk/21.4.7075529 $ANDROID_NDK_ROOT
         
-      - uses: Skycoder42/action-setup-qt@master
-        id: qt
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
-          platform: ${{matrix.platform}}
 
       - name: Install QtApng
         run: |
@@ -77,9 +76,8 @@ jobs:
           ./get_libs.sh 1.2.13 1.6.37
           cd ../..
           qmake CONFIG+=install_ok QMAKE_CXXFLAGS+="-fno-sized-deallocation" QT_PLATFORM=${{matrix.platform}}
-          ${{steps.qt.outputs.make}} qmake_all
-          ${{steps.qt.outputs.make}}
-          ${{steps.qt.outputs.make}} INSTALL_ROOT="${{steps.qt.outputs.installdir}}" install
+          make qmake_all
+          make
 
       - name: Install Windows Discord RPC
         if: contains(matrix.os, 'windows')
