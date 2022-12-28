@@ -23,14 +23,19 @@ jobs:
         include:
           - platform: gcc_64
             os: ubuntu-latest
+            target: desktop
           - platform: android
             os: ubuntu-latest
-          - platform: win64_msvc2019_64
+            target: android
+          - platform: msvc
             os: windows-2019
-          - platform: win64_mingw
+            target: desktop
+          - platform: mingw
             os: windows-latest
+            target: desktop
           - platform: clang_64
             os: macos-latest
+            target: desktop
 
     runs-on: ${{matrix.os}}
     steps:
@@ -49,7 +54,7 @@ jobs:
           key: qt-${{matrix.version}}-${{matrix.platform}}
 
       - name: Add msbuild to PATH
-        if: matrix.platform == 'win64_msvc2019_64'
+        if: matrix.platform == 'msvc'
         uses: microsoft/setup-msbuild@main
         
       - name: Downgrade Android NDK
@@ -66,6 +71,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
+          target: ${{matrix.target}}
           arch: ${{matrix.platform}}
 
       - name: Install Qt Websockets
@@ -73,6 +79,8 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
+          target: ${{matrix.target}}
+          arch: ${{matrix.platform}}
           modules: qtwebsockets
 
       - name: Install QtApng
@@ -230,7 +238,7 @@ jobs:
           mkdir imageformats
           cp ../QtApng/plugins/imageformats/libqapng.so ./imageformats/libqapng.so
           chmod +x launch.sh
-          ls
+          cp ../build/Attorney_Online .
           chmod +x Attorney_Online
           tar -cf Attorney_Online.tar ./*
           rm -rf imageformats
@@ -263,10 +271,8 @@ jobs:
         run: |
           mkdir ./build/libs/
           mkdir ./build/libs/armeabi-v7a/
-          ls
-          ls ./bin/
-          ls ./lib/
-          mv ./bin/*.so ./build/libs/armeabi-v7a/
+          ls ./build/
+          mv ./lib/*.so ./build/libs/armeabi-v7a/
           cp ./QtApng/plugins/imageformats/libplugins_imageformats_qapng_armeabi-v7a.so ./build/libs/armeabi-v7a/
           androiddeployqt --input android-Attorney_Online-deployment-settings.json --output ./build/ --apk ./bin/AttorneyOnline.apk
 
