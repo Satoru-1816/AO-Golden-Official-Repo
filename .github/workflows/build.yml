@@ -222,6 +222,7 @@ jobs:
           mkdir imageformats
           cp ../QtApng/plugins/imageformats/libqapng.so ./imageformats/libqapng.so
           chmod +x launch.sh
+          ls
           chmod +x Attorney_Online
           tar -cf Attorney_Online.tar ./*
           rm -rf imageformats
@@ -234,6 +235,8 @@ jobs:
         working-directory: ${{github.workspace}}/bin/
         shell: bash
         run: |
+          ls
+          ls ..
           macdeployqt Attorney_Online.app
           cp ../QtApng/plugins/imageformats/libqapng.dylib ./Attorney_Online.app/Contents/PlugIns/imageformats/
           mv *.dylib ./Attorney_Online.app/Contents/Frameworks
@@ -252,6 +255,9 @@ jobs:
         run: |
           mkdir ./build/libs/
           mkdir ./build/libs/armeabi-v7a/
+          ls
+          ls ./bin/
+          ls ./lib/
           mv ./bin/*.so ./build/libs/armeabi-v7a/
           cp ./QtApng/plugins/imageformats/libplugins_imageformats_qapng_armeabi-v7a.so ./build/libs/armeabi-v7a/
           androiddeployqt --input android-Attorney_Online-deployment-settings.json --output ./build/ --apk ./bin/AttorneyOnline.apk
