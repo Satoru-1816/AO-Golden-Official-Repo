@@ -16,8 +16,8 @@ jobs:
         platform:
           - gcc_64
           - android
-          - msvc2019
-          - mingw81_32
+          - win64_msvc2019_64
+          - win64_mingw
           - clang_64
 
         include:
@@ -49,7 +49,7 @@ jobs:
           key: qt-${{matrix.version}}-${{matrix.platform}}
 
       - name: Add msbuild to PATH
-        if: matrix.platform == 'msvc2019'
+        if: matrix.platform == 'win64_msvc2019_64'
         uses: microsoft/setup-msbuild@main
         
       - name: Downgrade Android NDK
@@ -196,7 +196,7 @@ jobs:
       - name: qmake android
         if: matrix.platform == 'android'
         run: |
-          qmake CONFIG+=install_ok QT_PLATFORM=${{matrix.platform}} ANDROID_ABIS="armeabi-v7a"
+          qmake CONFIG+=install_ok QT_PLATFORM=android_armv7 ANDROID_ABIS="armeabi-v7a"
 
       - name: build
         run: |
