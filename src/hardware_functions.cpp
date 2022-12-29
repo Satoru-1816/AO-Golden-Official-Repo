@@ -41,11 +41,19 @@ QString get_hdid()
 #elif defined(ANDROID)
 QString get_hdid()
 {
+    #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QAndroidJniObject appctx = QAndroidJniObject::callStaticObjectMethod("org/qtproject/qt5/android/QtNative", "activity", "()Landroid/app/Activity;").callObjectMethod("getApplicationContext","()Landroid/content/Context;");
     QAndroidJniObject androidId = QAndroidJniObject::callStaticObjectMethod("android/provider/Settings$Secure","getString",
                                                                             "(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;",
                                                                             appctx.callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;").object<jobject>(),
                                                                             QAndroidJniObject::fromString("android_id").object<jstring>());
+    #else
+    QJniObject appctx = QJniObject::callStaticObjectMethod("org/qtproject/qt5/android/QtNative", "activity", "()Landroid/app/Activity;").callObjectMethod("getApplicationContext","()Landroid/content/Context;");
+    QJniObject androidId = QJniObject::callStaticObjectMethod("android/provider/Settings$Secure","getString",
+                                                                            "(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;",
+                                                                            appctx.callObjectMethod("getContentResolver", "()Landroid/content/ContentResolver;").object<jobject>(),
+                                                                            QJniObject::fromString("android_id").object<jstring>());
+    #endif
     return androidId.toString();
 }
 #elif QT_VERSION < QT_VERSION_CHECK(5, 11, 0)
