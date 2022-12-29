@@ -62,10 +62,10 @@ TRANSLATIONS = resource/translations/ao_en.ts \
 win32:RC_ICONS = resource/logo_ao2.ico
 macx:ICON = resource/logo_ao2.icns
 
-equals(QT_VERSION, 5){
+equals(QT_MAJOR_VERSION, 5){
    android:QT += androidextras
 }
-equals(QT_VERSION, 6){
+equals(QT_MAJOR_VERSION, 6){
    android:QT += core-private
 }
 
