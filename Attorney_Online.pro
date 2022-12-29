@@ -65,6 +65,9 @@ macx:ICON = resource/logo_ao2.icns
 equals(QT_VERSION, 5){
    android:QT += androidextras
 }
+equals(QT_VERSION, 6){
+   android:QT += core-private
+}
 
 android:DISTFILES += \
     android/AndroidManifest.xml \
