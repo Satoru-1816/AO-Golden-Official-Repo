@@ -23,19 +23,14 @@ jobs:
         include:
           - platform: gcc_64
             os: ubuntu-latest
-            target: desktop
           - platform: android
             os: ubuntu-latest
-            target: android
           - platform: msvc
             os: windows-2019
-            target: desktop
           - platform: mingw
             os: windows-latest
-            target: desktop
           - platform: clang_64
             os: macos-latest
-            target: desktop
 
     runs-on: ${{matrix.os}}
     steps:
@@ -71,7 +66,14 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
-          target: ${{matrix.target}}
+          arch: ${{matrix.platform}}
+          
+      - name: Install Qt Android
+        if: matrix.platform == 'android'
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{matrix.version}}
+          target: android
           arch: ${{matrix.platform}}
 
       - name: Install Qt Websockets
