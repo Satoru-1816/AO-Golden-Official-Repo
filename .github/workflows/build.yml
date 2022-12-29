@@ -154,16 +154,16 @@ jobs:
         run: |
           curl http://www.un4seen.com/files/bass24.zip -o bass.zip
           unzip -d bass -o bass.zip
-          cp ./bass/c/bass.lib ./lib/
-          cp ./bass/bass.dll ./bin/
+          cp ./bass/c/x64/bass.lib ./lib/
+          cp ./bass/x64/bass.dll ./bin/
           curl http://www.un4seen.com/files/bassmidi24.zip -o bassmidi.zip
           unzip -d bass -o bassmidi.zip
-          cp ./bass/c/bassmidi.lib ./lib/
-          cp ./bass/bassmidi.dll ./bin/
+          cp ./bass/c/x64/bassmidi.lib ./lib/
+          cp ./bass/x64/bassmidi.dll ./bin/
           curl http://www.un4seen.com/files/bassopus24.zip -o bassopus.zip
           unzip -d bass -o bassopus.zip
-          cp ./bass/c/bassopus.lib ./lib/
-          cp ./bass/bassopus.dll ./bin/
+          cp ./bass/c/x64/bassopus.lib ./lib/
+          cp ./bass/x64/bassopus.dll ./bin/
       - name: Install Linux BASS
         if: matrix.platform == 'gcc_64'
         run: |
