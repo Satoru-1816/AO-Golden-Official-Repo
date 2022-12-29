@@ -78,7 +78,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
-          arch: ${{matrix.platform}}
+          arch: win64_mingw73
           tools: 'tools_mingw qt.tools.win64_mingw730'
           
       - name: Install Qt Android
