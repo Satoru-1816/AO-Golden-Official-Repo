@@ -78,7 +78,7 @@ jobs:
         with:
           version: ${{matrix.version}}
           arch: win64_mingw73
-          tools: 'tools_mingw qt.tools.win64_mingw730'
+          tools: 'qt.tools.win64_mingw730'
           
       - name: Install Qt Android
         if: matrix.platform == 'android' && contains(matrix.version, '5.')
@@ -101,7 +101,7 @@ jobs:
         with:
           version: ${{matrix.version}}
           arch: ${{matrix.platform}}
-          tools: 'tools_mingw tools_mingw qt.tools.win64_mingw810'
+          tools: 'qt.tools.win64_mingw810'
           
       - name: Install Qt6 Websockets Android
         if: matrix.platform == 'android' && contains(matrix.version, '6.')
