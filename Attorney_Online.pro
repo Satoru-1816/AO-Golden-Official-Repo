@@ -62,7 +62,9 @@ TRANSLATIONS = resource/translations/ao_en.ts \
 win32:RC_ICONS = resource/logo_ao2.ico
 macx:ICON = resource/logo_ao2.icns
 
-android:QT += androidextras
+equals(QT_VERSION, 5){
+   android:QT += androidextras
+}
 
 android:DISTFILES += \
     android/AndroidManifest.xml \
