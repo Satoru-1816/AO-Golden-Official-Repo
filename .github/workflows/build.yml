@@ -73,6 +73,14 @@ jobs:
           version: ${{matrix.version}}
           arch: ${{matrix.platform}}
           
+      - name: Install MingW 7
+        if: contains(matrix.platform, 'mingw') && contains(matrix.version, '5.')
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{matrix.version}}
+          arch: ${{matrix.platform}}
+          tools: 'tools_mingw qt.tools.win64_mingw730'
+          
       - name: Install Qt Android
         if: matrix.platform == 'android' && contains(matrix.version, '5.')
         uses: jurplel/install-qt-action@v3
@@ -87,6 +95,14 @@ jobs:
         with:
           version: ${{matrix.version}}
           modules: qtwebsockets
+          
+      - name: Install MingW 8
+        if: contains(matrix.platform, 'mingw') && contains(matrix.version, '6.')
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{matrix.version}}
+          arch: ${{matrix.platform}}
+          tools: 'tools_mingw qt.tools.win64_mingw810'
           
       - name: Install Qt6 Websockets Android
         if: matrix.platform == 'android' && contains(matrix.version, '6.')
