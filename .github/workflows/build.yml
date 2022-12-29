@@ -115,14 +115,20 @@ jobs:
           arch: 'android_armv7'
           modules: qtwebsockets
 
-      - name: Install QtApng
+      - name: Clone QtApng
         run: |
           git clone https://github.com/stonedDiscord/QtApng.git
+          
+      - name: Update QtApng
+        run: |
           cd QtApng
           cd src/3rdparty
           chmod +x get_libs.sh
           ./get_libs.sh 1.2.13 1.6.37
-          cd ../..
+
+      - name: Build QtApng
+        run: |
+          cd QtApng
           qmake CONFIG+=install_ok QMAKE_CXXFLAGS+="-fno-sized-deallocation" QT_PLATFORM=${{matrix.platform}}
           make qmake_all
           make
