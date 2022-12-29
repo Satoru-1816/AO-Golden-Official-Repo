@@ -139,9 +139,9 @@ jobs:
       - name: Build QtApng
         run: |
           cd QtApng
-          qmake CONFIG+=install_ok QMAKE_CXXFLAGS+="-fno-sized-deallocation" QT_PLATFORM=${{matrix.platform}}
-          make qmake_all
-          make
+          qmake -d CONFIG+=install_ok QMAKE_CXXFLAGS+="-fno-sized-deallocation" QT_PLATFORM=${{matrix.platform}}
+          make -d qmake_all
+          make -d
 
       - name: Install Windows Discord RPC
         if: contains(matrix.os, 'windows')
