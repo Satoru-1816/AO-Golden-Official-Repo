@@ -59,6 +59,14 @@ jobs:
            ANDROID_SDK_ROOT=${ANDROID_ROOT}/sdk
            ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk-bundle
            SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
+           echo "y" | $SDKMANAGER --uninstall "ndk;25.1.8937393"
+           echo "y" | $SDKMANAGER --uninstall "ndk;25.0.8775105"
+           echo "y" | $SDKMANAGER --uninstall "ndk;24.0.8215888"
+           echo "y" | $SDKMANAGER --uninstall "ndk;23.2.8568313"
+           echo "y" | $SDKMANAGER --uninstall "ndk;23.1.7779620"
+           echo "y" | $SDKMANAGER --uninstall "ndk;23.0.7599858"
+           echo "y" | $SDKMANAGER --uninstall "ndk;22.1.7171670"
+           echo "y" | $SDKMANAGER --uninstall "ndk;22.0.7026061"
            echo "y" | $SDKMANAGER "ndk;21.4.7075529"
            ln -sfn $ANDROID_SDK_ROOT/ndk/21.4.7075529 $ANDROID_NDK_ROOT
            sudo ln /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ranlib /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
