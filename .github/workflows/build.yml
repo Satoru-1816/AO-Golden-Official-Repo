@@ -75,7 +75,7 @@ jobs:
            sudo ln /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ranlib /usr/local/lib/android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android-ranlib
         
       - name: Install Qt
-        if: matrix.platform != 'android' && contains(matrix.version, '5.')
+        if: matrix.platform != 'android' && !contains(matrix.platform, 'mingw') && contains(matrix.version, '5.')
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
@@ -110,7 +110,7 @@ jobs:
         with:
           version: ${{matrix.version}}
           arch: ${{matrix.platform}}
-          tools: 'tools_mingw qt.tools.win64_mingw810'
+          tools: 'tools_mingw tools_mingw qt.tools.win64_mingw810'
           
       - name: Install Qt6 Websockets Android
         if: matrix.platform == 'android' && contains(matrix.version, '6.')
