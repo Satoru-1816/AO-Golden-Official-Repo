@@ -72,13 +72,13 @@ jobs:
           version: ${{matrix.version}}
           arch: ${{matrix.platform}}
           
-      - name: Install MingW 7
+      - name: Install MingW 8
         if: contains(matrix.platform, 'mingw') && contains(matrix.version, '5.')
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
-          arch: win64_mingw73
-          tools: 'tools_mingw,qt.tools.win64_mingw730'
+          arch: win64_mingw81
+          tools: 'tools_mingw,qt.tools.win64_mingw81'
           
       - name: Install Qt Android
         if: matrix.platform == 'android' && contains(matrix.version, '5.')
