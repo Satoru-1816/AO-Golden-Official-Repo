@@ -111,13 +111,6 @@ jobs:
           target: android
           modules: qtwebsockets
           
-      - name: Set Android NDK root
-        if: matrix.platform == 'android'
-        run: |
-          export ANDROID_ROOT=/usr/local/lib/android
-          export ANDROID_SDK_ROOT=${ANDROID_ROOT}/sdk
-          export ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk/21.4.7075529/
-
       - name: Install QtApng
         run: |
           git clone https://github.com/stonedDiscord/QtApng.git
@@ -126,6 +119,7 @@ jobs:
           chmod +x get_libs.sh
           ./get_libs.sh 1.2.13 1.6.37
           cd ../..
+          export ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk-bundle/
           qmake CONFIG+=install_ok QMAKE_CXXFLAGS+="-fno-sized-deallocation" QT_PLATFORM=${{matrix.platform}}
           make qmake_all
           make
