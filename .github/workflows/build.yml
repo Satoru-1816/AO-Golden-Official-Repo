@@ -63,6 +63,7 @@ jobs:
            ln -sfn $ANDROID_SDK_ROOT/ndk/21.4.7075529 $ANDROID_NDK_ROOT
         
       - name: Install Qt
+        if: matrix.platform != 'android'
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
