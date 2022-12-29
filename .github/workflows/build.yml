@@ -216,6 +216,7 @@ jobs:
       - name: qmake android
         if: matrix.platform == 'android'
         run: |
+          export ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk-bundle/
           qmake CONFIG+=install_ok QT_PLATFORM=android_armv7 ANDROID_ABIS="armeabi-v7a"
       - name: build
         run: |
