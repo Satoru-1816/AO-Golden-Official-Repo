@@ -238,6 +238,7 @@ jobs:
           rm -r iconengines
           rm -r bearer
           rm -r styles
+  
       - name: Deploy Linux
         if: matrix.platform == 'gcc_64'
         working-directory: ${{github.workspace}}/bin/
@@ -250,10 +251,12 @@ jobs:
           ls
           chmod +x Attorney_Online
           tar -cf Attorney_Online.tar ./*
+          rm -rf base
           rm -rf imageformats
           rm *.so
           rm *.sh
           rm Attorney_Online
+
       - name: Deploy Mac
         if: matrix.os == 'macos-latest'
         working-directory: ${{github.workspace}}/bin/
