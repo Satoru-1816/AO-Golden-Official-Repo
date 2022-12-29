@@ -6,7 +6,11 @@
 #include <stdio.h>
 
 #ifdef ANDROID
-#include <QtAndroidExtras/QtAndroid>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <QAndroidJniObject>
+#else
+#include <QJniObject>
+#endif
 #endif
 
 QString get_hdid();
