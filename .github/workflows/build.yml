@@ -249,17 +249,17 @@ jobs:
         run: |
           windeployqt --no-quick-import --no-translations --no-virtualkeyboard --no-compiler-runtime --no-opengl-sw .
           cp ../QtApng/plugins/imageformats/qapng.dll ./imageformats/
-          rm ./imageformats/qtiff.dll
-          rm ./imageformats/qjpeg.dll
-          rm ./imageformats/qicns.dll
-          rm ./imageformats/qico.dll
-          rm ./imageformats/qsvg.dll
-          rm ./imageformats/qtga.dll
-          rm ./imageformats/qwbmp.dll
-          rm ./Qt5Svg.dll
-          rm -r iconengines
-          rm -r bearer
-          rm -r styles
+          rm -f ./imageformats/qtiff.dll
+          rm -f ./imageformats/qjpeg.dll
+          rm -f ./imageformats/qicns.dll
+          rm -f ./imageformats/qico.dll
+          rm -f ./imageformats/qsvg.dll
+          rm -f ./imageformats/qtga.dll
+          rm -f ./imageformats/qwbmp.dll
+          rm -f ./Qt5Svg.dll
+          rm -rf iconengines
+          rm -rf bearer
+          rm -rf styles
   
       - name: Deploy Linux
         if: matrix.platform == 'gcc_64'
