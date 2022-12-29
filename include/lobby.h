@@ -18,7 +18,11 @@
 #include <QScrollBar>
 #include <QHeaderView>
 #ifdef ANDROID
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QtAndroidExtras/QtAndroid>
+#else
+#include <QtCore/private/qandroidextras_p.h>
+#endif
 #endif
 
 class AOApplication;
