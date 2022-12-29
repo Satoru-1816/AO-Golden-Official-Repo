@@ -90,7 +90,7 @@ jobs:
           arch: ${{matrix.platform}}
 
       - name: Install Qt6 Websockets
-        if: matrix.platform != 'android' && contains(matrix.version, '6.')
+        if: matrix.platform != 'android' && !contains(matrix.platform, 'mingw') && contains(matrix.version, '6.')
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
@@ -103,6 +103,7 @@ jobs:
           version: ${{matrix.version}}
           arch: ${{matrix.platform}}
           tools: 'tools_mingw,qt.tools.win64_mingw810'
+          modules: qtwebsockets
           
       - name: Install Qt6 Websockets Android
         if: matrix.platform == 'android' && contains(matrix.version, '6.')
