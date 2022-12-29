@@ -104,7 +104,17 @@ jobs:
           arch: ${{matrix.platform}}
           tools: 'tools_mingw,qt.tools.win64_mingw810'
           modules: qtwebsockets
-          
+
+      - name: Install Qt6 Android build tools
+        if: matrix.platform == 'android' && contains(matrix.version, '6.')
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{matrix.version}}
+          host: 'linux'
+          target: 'desktop'
+          arch: 'gcc_64'
+          modules: 'qtwebsockets'
+
       - name: Install Qt6 Websockets Android
         if: matrix.platform == 'android' && contains(matrix.version, '6.')
         uses: jurplel/install-qt-action@v3
@@ -113,7 +123,7 @@ jobs:
           host: 'linux'
           target: 'android'
           arch: 'android_armv7'
-          modules: qtwebsockets
+          modules: 'qtwebsockets'
 
       - name: Clone QtApng
         run: |
