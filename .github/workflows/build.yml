@@ -108,10 +108,11 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{matrix.version}}
-          target: android
-          arch: android_armv7
+          host: 'linux'
+          target: 'android'
+          arch: 'android_armv7'
           modules: qtwebsockets
-          
+
       - name: Install QtApng
         run: |
           git clone https://github.com/stonedDiscord/QtApng.git
