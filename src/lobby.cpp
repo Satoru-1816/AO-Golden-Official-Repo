@@ -128,8 +128,8 @@ void Lobby::set_widgets()
         QtAndroid::requestPermissionsSync({"android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"});
     }
     #else
-    if(QtAndroidPrivate::checkPermission("android.permission.READ_EXTERNAL_STORAGE")==QtAndroidPrivate::PermissionResult::Denied) {
-        QtAndroidPrivate::requestPermissionsSync({"android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"});
+    if(QtAndroidPrivate::checkPermission(QtAndroidPrivate::Storage).result()==QtAndroidPrivate::Denied) {
+        QtAndroidPrivate::requestPermission(QtAndroidPrivate::Storage);
     }
     #endif
     #endif
