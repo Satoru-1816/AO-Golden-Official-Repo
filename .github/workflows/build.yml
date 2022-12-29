@@ -48,9 +48,9 @@ jobs:
           path: qt/${{matrix.version}}/${{matrix.platform}}
           key: qt-${{matrix.version}}-${{matrix.platform}}
 
-      - name: Add msbuild to PATH
+      - name: Setup VS Dev Environment
         if: matrix.platform == 'win64_msvc2019_64'
-        uses: microsoft/setup-msbuild@main
+        uses: seanmiddleditch/gha-setup-vsdevenv@v4
         
       - name: Downgrade Android NDK
         if: matrix.platform == 'android'
