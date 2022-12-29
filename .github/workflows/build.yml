@@ -109,6 +109,7 @@ jobs:
         with:
           version: ${{matrix.version}}
           target: android
+          arch: android_armv7
           modules: qtwebsockets
           
       - name: Install QtApng
