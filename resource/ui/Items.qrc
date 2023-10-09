@@ -1,0 +1,47 @@
+<RCC>
+  <qresource prefix="/base/themes/default_remake">
+    <file>lobby.ui</file>
+    <file>options_dialog.ui</file>
+  </qresource>
+  <qresource prefix="Images">
+    <file>background.png</file>
+    <file>connect_off.png</file>
+    <file>connect_on.png</file>
+    <file>connect_pressed.png</file>
+    <file>settings_bg.png</file>
+    <file>Athena_BG.png</file>
+    <file>Apollo_BG.png</file>
+    <file>Miles_BG.png</file>
+    <file>Phoenix_BG.png</file>
+    <file>tab_changelog_off.png</file>
+    <file>tab_changelog_off_hover.png</file>
+    <file>tab_changelog_on.png</file>
+    <file>tab_changelog_on_hover.png</file>
+    <file>tab_motd_off.png</file>
+    <file>tab_motd_off_hover.png</file>
+    <file>tab_motd_on.png</file>
+    <file>tab_motd_on_hover.png</file>
+    <file>grain-overlay.png</file>
+    <file>scanlines.png</file>
+  </qresource>
+  <qresource prefix="Logos">
+    <file>Logo_v5.png</file>
+    <file>Subtitle_v8.png</file>
+  </qresource>
+  <qresource prefix="Icons">
+    <file>icon_minus.png</file>
+    <file>icon_plus.png</file>
+    <file>icon_settings.png</file>
+    <file>icon_about2.png</file>
+    <file>icon_badge_1.png</file>
+    <file>icon_badge_2.png</file>
+    <file>icon_wireless_3.png</file>
+    <file>icon_refresh.png</file>
+    <file>icon_edit_2.png</file>
+    <file>Icon_globe.png</file>
+    <file>discord-mark.png</file>
+    <file>icon_demos.png</file>
+    <file>icon_favorites.png</file>
+    <file>icon_public.png</file>
+  </qresource>
+</RCC>
